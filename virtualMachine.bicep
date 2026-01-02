@@ -4,7 +4,7 @@ param location string = 'westeurope'
 param adminPassword string
 
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2024-03-01' = {
-  name: 'henry-demo'
+  name: 'samir-demo'
   location: location
   properties: {
     addressSpace: {
@@ -61,7 +61,7 @@ resource virtualMachine 'Microsoft.Compute/virtualMachines@2024-07-01' = {
   properties: {
     osProfile: {
       computerName: 'vm001'
-      adminUsername: 'flanders'
+      adminUsername: 'samirpramane9207'
       adminPassword: adminPassword
     }
     hardwareProfile: {
