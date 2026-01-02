@@ -1,4 +1,5 @@
 param location string = 'westeurope'
+param adminUsername string = 'samirpramane'
 
 @secure()
 param adminPassword string
@@ -61,11 +62,11 @@ resource virtualMachine 'Microsoft.Compute/virtualMachines@2024-07-01' = {
   properties: {
     osProfile: {
       computerName: 'vm001'
-      adminUsername: 'samirpramane9270'
+      adminUsername: adminUsername
       adminPassword: adminPassword
     }
     hardwareProfile: {
-      vmSize: 'Standard_D2_v5'
+      vmSize: 'Standard_B1s'
     }
     storageProfile: {
       imageReference: {
