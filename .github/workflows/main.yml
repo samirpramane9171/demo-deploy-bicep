@@ -1,0 +1,26 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy Virtual Machine Bicep
+
+# Controls when the workflow will run
+on: [push]
+jobs:
+  deploy-bicep:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout
+       uses: action/checkout@main
+
+     - name: Login
+       uses: azure/login@v1
+       with:
+         creds: ${{secrets.AZURE_CREDENTIALS}}
+     
+     - name: Deploy
+       uses: azure/arm-deploy@v1
+       with:
+         subscriptionId: 0f7d897e-8881-4633-95d6-c66fcc670f59
+         resourceGroupName: actions-virtual-machine
+         template: ./virtualMachine.bicep
+         parameters: 'adminPassword=${{ secrets.VM_PASSWORD }}'
+         failOnStdErr: false
